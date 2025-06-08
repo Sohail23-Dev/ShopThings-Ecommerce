@@ -1,0 +1,107 @@
+.toggle-btn {
+    background: linear-gradient(135deg, #38bdf8 0%, #a5b4fc 60%, #c4b5fd 100%);
+    border: 2px solid #a5b4fc;
+    border-radius: 1.5rem;
+    width: 200px;
+    height: 56px;
+    transition: background 0.3s, border-color 0.3s;
+    cursor: pointer;
+    box-shadow: 0 4px 24px 0 rgba(80, 80, 200, 0.10), 0 1.5px 8px 0 rgba(80, 80, 200, 0.10);
+    position: relative;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+.toggle-btn.toggled {
+    background: linear-gradient(135deg, #34d399 0%, #818cf8 100%);
+    border-color: #818cf8;
+}
+.toggle-btn::before {
+    content: "Login";
+    display: block;
+    opacity: 1;
+    color: #3730a3;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: opacity 0.7s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.toggle-btn.toggled::before {
+    opacity: 0;
+}
+.toggle-btn.toggled::after {
+    content: "Register";
+    opacity: 1;
+    color: #044b7e;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: opacity 0.7s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.toggle-btn::after {
+    content: "Register";
+    opacity: 0;
+    transition: opacity 0.7s;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.toggle-btn .thumb {
+    height: 45px;
+    width: 45px;
+    background: linear-gradient(135deg, #fff 60%, #e0e7ff 100%);
+    border-radius: 99px;
+    box-shadow: 0 2px 8px 0 rgba(80, 80, 200, 0.10);
+    transition: left 1s cubic-bezier(0.4,0,0.2,1), background 0.3s;
+    position: absolute;
+    left: 3px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 2px solid #a5b4fc;
+}
+.toggle-btn.toggled .thumb {
+    left: calc(200px - 50px);
+    background: linear-gradient(135deg, #f0fdfa 60%, #d1fae5 100%);
+    border-color: #34d399;
+}
+.toggle-btn:hover {
+    border-color: #6366f1;
+}
+.perspective-1000 {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  transition: transform 0.8s cubic-bezier(0.4,0,0.2,1);
+  transform-style: preserve-3d;
+}
+.flip-card-inner.flipped {
+  transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1.5rem;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+.backface-hidden {
+  backface-visibility: hidden;
+}
