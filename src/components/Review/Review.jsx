@@ -35,15 +35,15 @@ const reviews = [
 
 const Review = () => {
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center bg-gray-50 py-10">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center bg-gray-50 py-10 px-2 sm:px-4">
       <h2 className="text-3xl font-extrabold text-blue-900 mb-8 text-center">
         Customer Reviews
       </h2>
-      <div className="flex flex-wrap justify-center gap-8 w-full max-w-6xl">
+      <div className="flex flex-wrap justify-center gap-4 sm:gap-8 w-full max-w-6xl">
         {reviews.map((review, idx) => (
           <div
             key={idx}
-            className="bg-white rounded-2xl shadow-lg border-2 border-blue-100 hover:border-blue-400 w-80 p-6 flex flex-col items-center transition-transform duration-300 hover:scale-105"
+            className="bg-white rounded-2xl shadow-lg border-2 border-blue-100 hover:border-blue-400 w-full max-w-xs p-6 flex flex-col items-center transition-transform duration-300 hover:scale-105 mx-auto"
           >
             <div className="flex items-center gap-2 mb-2">
               <span className="font-bold text-lg text-blue-700">

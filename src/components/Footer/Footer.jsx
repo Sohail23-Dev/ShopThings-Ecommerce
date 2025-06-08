@@ -3,10 +3,10 @@ import React from "react";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-gray-50 border-t border-gray-200 pt-10 pb-2 px-4 mt-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-10 text-center">
+      <footer className="bg-gray-50 border-t border-gray-200 pt-10 pb-2 px-2 sm:px-4 mt-10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10 text-center flex-wrap">
           {/* Brand and Description */}
-          <div className="flex-1 min-w-[220px] flex flex-col items-center">
+          <div className="flex-1 min-w-[220px] flex flex-col items-center mb-6 md:mb-0">
             <div className="font-extrabold text-2xl text-black mb-2 flex flex-col items-center">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ const Footer = () => {
               </svg>
               Shop<span className="text-blue-600">Things</span>
             </div>
-            <p className="text-gray-600 text-sm leading-relaxed">
+            <p className="text-gray-600 text-sm leading-relaxed max-w-xs">
               Your trusted destination for seamless online shopping. We're
               committed to quality, convenience, and customer satisfaction —
               bringing you the best products, fast delivery, and reliable
@@ -33,7 +33,7 @@ const Footer = () => {
             </p>
           </div>
           {/* Address */}
-          <div className="flex-1 min-w-[180px] flex flex-col items-center">
+          <div className="flex-1 min-w-[180px] flex flex-col items-center mb-6 md:mb-0">
             <div className="font-bold text-md text-black mb-2">Address</div>
             <p className="text-gray-600 text-sm">
               Sector 136, Sovergein Tower
@@ -75,7 +75,7 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center border-t border-gray-200 mt-8 pt-4 text-xs text-gray-500 text-center gap-2">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center border-t border-gray-200 mt-8 pt-4 text-xs text-gray-500 text-center gap-2 flex-wrap">
           <div>© 2025 ShopThings | All Rights Reserved</div>
           <div className="space-x-4 mt-2 md:mt-0">
             <a href="#" className="hover:text-blue-600">

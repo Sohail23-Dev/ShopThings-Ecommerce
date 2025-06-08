@@ -2,8 +2,8 @@ import React from "react";
 
 const Contact = () => {
   return (
-    <div className="flex justify-center items-center min-h-[80vh] bg-transparent">
-      <div className="card flex flex-col bg-gradient-to-br from-sky-300 via-blue-200 to-purple-200 h-auto w-[60vw] max-w-2xl shadow-xl text-center rounded-3xl my-8 mx-4 hover:scale-105 transition-transform duration-300 border-2 border-blue-200 hover:border-purple-400 p-8">
+    <div className="flex justify-center items-center min-h-[80vh] bg-transparent px-2 sm:px-4">
+      <div className="card flex flex-col bg-gradient-to-br from-sky-300 via-blue-200 to-purple-200 h-auto w-full max-w-lg shadow-xl text-center rounded-3xl my-8 mx-2 sm:mx-4 hover:scale-105 transition-transform duration-300 border-2 border-blue-200 hover:border-purple-400 p-4 sm:p-8">
         <h2 className="text-2xl font-extrabold text-blue-900 mb-4">Contact Us</h2>
         <input type="text" placeholder="Name" className="mb-3 px-4 py-2 rounded-xl border-2 border-blue-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200" />
         <input type="number" placeholder="Number" className="mb-3 px-4 py-2 rounded-xl border-2 border-blue-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200" />

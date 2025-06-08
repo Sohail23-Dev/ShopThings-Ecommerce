@@ -29,7 +29,7 @@ const faqs = [
 const FAQ = () => {
   const [openIndex, setOpenIndex] = useState(null);
   return (
-    <div className="min-h-[80vh] flex flex-col items-center justify-center bg-gray-50 py-10">
+    <div className="min-h-[80vh] flex flex-col items-center justify-center bg-gray-50 py-10 px-2 sm:px-4">
       <h2 className="text-3xl font-extrabold text-blue-900 mb-8 text-center">
         Frequently Asked Questions
       </h2>
@@ -40,7 +40,7 @@ const FAQ = () => {
             className="bg-white rounded-xl shadow border border-blue-100"
           >
             <button
-              className="w-full flex justify-between items-center px-6 py-4 text-left text-lg font-semibold text-blue-800 focus:outline-none hover:bg-blue-50 transition-colors rounded-xl"
+              className="w-full flex justify-between items-center px-4 sm:px-6 py-4 text-left text-lg font-semibold text-blue-800 focus:outline-none hover:bg-blue-50 transition-colors rounded-xl"
               onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
             >
               <span>{faq.question}</span>
@@ -53,7 +53,7 @@ const FAQ = () => {
               </span>
             </button>
             {openIndex === idx && (
-              <div className="px-6 pb-4 text-gray-700 text-base animate-fade-in">
+              <div className="px-4 sm:px-6 pb-4 text-gray-700 text-base animate-fade-in">
                 {faq.answer}
               </div>
             )}
