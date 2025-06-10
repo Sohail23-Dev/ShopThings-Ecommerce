@@ -8,9 +8,9 @@ const NewCard = ({ ObjProd }) => {
     e.target.src = notav;
   };
   return (
-    <div className="card flex flex-col bg-gradient-to-br from-sky-300 via-blue-200 to-purple-200 h-96 w-72 sm:w-80 md:w-96 shadow-xl text-center rounded-3xl my-8 mx-2 sm:mx-4 hover:scale-105 transition-transform duration-300 border-2 border-blue-200 hover:border-purple-400">
+    <div className="card flex flex-col bg-gradient-to-br from-sky-300 via-blue-200 to-purple-200 h-96 w-72 shadow-xl text-center rounded-3xl my-8 mx-4 hover:scale-105 transition-transform duration-300 border-2 border-blue-200 hover:border-purple-400">
       <figure className="flex justify-center -mt-8">
-        <img className="h-40 w-40 sm:w-48 sm:h-48 rounded-2xl shadow-lg object-cover border-4 border-white" src={image} alt={title} onError={handleImgError} />
+        <img className="h-40 w-40 rounded-2xl shadow-lg object-cover border-4 border-white" src={image} alt={title} onError={handleImgError} />
       </figure>
       <div className="card-body flex flex-col flex-1 justify-between p-4">
         <div>
