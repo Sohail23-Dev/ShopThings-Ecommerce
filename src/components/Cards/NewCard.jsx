@@ -1,9 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import notav from "../../assets/notav.webp";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addtoCart,
+  decreaseValue,
+  increaseValue,
+} from "../../features/cartSlice";
 const NewCard = ({ ObjProd }) => {
-  let { image, title, category, rating, price } = ObjProd;
-  const [quantity, setQuantity] = useState(0);
-  const [isCartActive, setIsCartActive] = useState(false);
+  let { id, image, title, category, price, color } = ObjProd;
+  const dispatch = useDispatch();
+
+  // Get the current quantity for this product from Redux
+  const cartItem = useSelector((state) =>
+    state.cart.find((item) => item.id === id)
+  );
+  const quantity = cartItem ? cartItem.quantity : 0;
+  const isCartActive = quantity > 0;
 
   // Handler for image error
   const handleImgError = (e) => {
@@ -12,36 +24,26 @@ const NewCard = ({ ObjProd }) => {
   };
 
   const handleAddToCart = () => {
-    setIsCartActive(true);
-    setQuantity((prev) => prev + 1);
+    dispatch(addtoCart({ ...ObjProd }));
   };
 
   const handleIncrease = () => {
-    setQuantity((prev) => {
-      if (prev >= 10) {
-        return 10;
-      } else {
-        return prev + 1;
-      }
-    });
+    if (cartItem.quantity >= 10) {
+      return;
+    } else {
+      dispatch(increaseValue({ id }));
+    }
   };
 
   const handleDecrease = () => {
-    setQuantity((prev) => {
-      if (prev <= 1) {
-        setIsCartActive(false);
-        return 0;
-      } else {
-        return prev - 1;
-      }
-    });
+    dispatch(decreaseValue({ id }));
   };
 
   return (
-    <div className="card flex flex-col bg-gradient-to-br from-sky-300 via-blue-200 to-purple-200 h-96 w-72 shadow-xl text-center rounded-3xl my-8 mx-4 hover:scale-105 transition-transform duration-300 border-2 border-blue-200 hover:border-purple-400">
+    <div className="card flex flex-col bg-white h-96 w-72 shadow-2xl text-center rounded-3xl my-8 mx-4 hover:scale-105 transition-transform duration-300 border border-gray-200 hover:border-blue-400">
       <figure className="flex justify-center -mt-8">
         <img
-          className="h-40 w-40 rounded-2xl shadow-lg object-cover border-4 border-white"
+          className="h-40 w-40 rounded-2xl shadow-md object-cover border-2 border-gray-100"
           src={image}
           alt={title}
           onError={handleImgError}
@@ -49,37 +51,35 @@ const NewCard = ({ ObjProd }) => {
       </figure>
       <div className="card-body flex flex-col flex-1 justify-between p-4">
         <div>
-          <h2 className="card-title text-blue-900 font-bold text-lg mb-2 truncate">
+          <h2 className="card-title text-gray-900 font-bold text-lg mb-2 truncate">
             {title}
           </h2>
           <p>
-            <span className="badge bg-gradient-to-r from-blue-400 to-purple-400 text-white px-3 py-1 rounded-full shadow-md text-xs font-semibold mb-2 inline-block">
+            <span className="badge bg-blue-100 text-blue-700 px-3 py-1 rounded-full shadow-sm text-xs font-semibold mb-2 inline-block">
               {category}
             </span>
           </p>
-          <p className="text-gray-700 text-sm mb-1">
-            Rating:{" "}
-            <span className="font-semibold text-yellow-500">★ {rating}</span>
+          <p className="text-gray-600 text-sm mb-1 flex items-center justify-center gap-1">
+            <span className="font-semibold text-yellow-500">★★★</span>
           </p>
-          <p className="text-2xl font-extrabold text-purple-700 mb-2">
-            ${price}
-          </p>
+          <p className="text-m font-extrabold text-gray-500 mb-2">{color}</p>
+          <p className="text-2xl font-extrabold text-gray-900 mb-2">${price}</p>
         </div>
         <div className="card-actions mt-auto flex justify-center">
           {!isCartActive ? (
             <button
               onClick={handleAddToCart}
-              className="buttonrm btn bg-gradient-to-r from-purple-400 to-blue-400 text-white px-6 py-2 rounded-full shadow-lg hover:from-blue-400 hover:to-purple-400 hover:scale-105 transition-transform duration-200 font-semibold tracking-wide"
+              className="btn bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full shadow-md transition-colors duration-200 font-semibold tracking-wide"
             >
               Add to Cart
             </button>
           ) : (
-            <div className="flex flex-row items-center gap-2 bg-white/80 rounded-full px-3 py-1 shadow-inner">
+            <div className="flex flex-row items-center gap-2 bg-gray-100 rounded-full px-3 py-1 shadow-inner">
               <button
-                onClick={handleIncrease}
-                className="relative right-15 bg-blue-400 hover:bg-blue-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center text-lg"
+                onClick={handleDecrease}
+                className="bg-blue-400 hover:bg-blue-600 text-white font-bold rounded-xl w-10 h-10 flex items-center justify-center text-lg relative -left-15"
               >
-                +
+                -
               </button>
               <input
                 type="number"
@@ -89,10 +89,10 @@ const NewCard = ({ ObjProd }) => {
                 className="w-8 text-center font-semibold text-blue-900 bg-transparent border-none focus:ring-0"
               />
               <button
-                onClick={handleDecrease}
-                className="relative left-15 bg-purple-400 hover:bg-purple-600 text-white font-bold rounded-full w-10 h-10 flex items-center justify-center text-lg"
+                onClick={handleIncrease}
+                className="bg-blue-600 hover:bg-blue-800 text-white font-bold rounded-xl w-10 h-10 flex items-center justify-center text-lg relative -right-15"
               >
-                -
+                +
               </button>
             </div>
           )}
@@ -101,5 +101,4 @@ const NewCard = ({ ObjProd }) => {
     </div>
   );
 };
-
 export default NewCard;

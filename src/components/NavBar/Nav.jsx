@@ -1,8 +1,13 @@
 import { React } from "react";
 import { Link } from "react-router-dom";
-import "./Nav.css"
+import "./Nav.css";
+import { useSelector } from "react-redux";
 
 const Nav = () => {
+  const quantity = useSelector((state) =>
+    state.cart.reduce((sum, item) => sum + item.quantity, 0)
+  );
+  // console.log(quantity);
   return (
     <nav className="main-bar nav-container flex items-center justify-between bg-white shadow-sm px-8 py-2 sticky top-0 z-10">
       {/* Logo and Brand */}
@@ -20,18 +25,13 @@ const Nav = () => {
             strokeLinejoin="round"
             d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m13-9l2 9m-5-9V6a2 2 0 10-4 0v7"
           />
-          <path
-            stroke="#2563eb"
-            strokeWidth="2"
-            d="M8 17l2 2 4-4"
-          />
+          <path stroke="#2563eb" strokeWidth="2" d="M8 17l2 2 4-4" />
         </svg>
-
         <Link to="/">
-        <span className="font-extrabold text-2xl text-black">
-          Shop
-          <span className="text-blue-600">Things</span>
-        </span>
+          <span className="font-extrabold text-2xl text-black">
+            Shop
+            <span className="text-blue-600">Things</span>
+          </span>
         </Link>
       </div>
       {/* Nav Links */}
@@ -64,7 +64,12 @@ const Nav = () => {
           to="/Cart"
           className="Nav-links text-gray-700 hover:text-blue-600 font-medium transition-colors"
         >
-          Cart
+          Cart{" "}
+          {quantity > 0 && (
+            <span className="relative -top-2 bg-red-600 text-white px-2 rounded-3xl text-xs ml-1 font-bold">
+              {quantity}
+            </span>
+          )}
         </Link>
         <Link
           to="/Login"
