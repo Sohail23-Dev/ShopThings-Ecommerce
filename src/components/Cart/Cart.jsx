@@ -22,6 +22,11 @@ const Cart = () => {
     navigate("/");
   };
 
+  const total = cartItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
+
   return (
     <div className="max-w-3xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 text-blue-700 border-b pb-2">
@@ -89,14 +94,35 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="flex justify-end">
+          <div className="md:col-span-1 flex flex-col justify-between bg-white rounded-2xl shadow-xl p-6 h-fit border border-blue-100 absolute right-[7vw] top-[20vh]">
+            <h2 className="text-xl font-bold text-gray-800 mb-4">
+              Order Summary
+            </h2>
+            <div className="flex flex-col gap-2 mb-6">
+              {cartItems.map((item) => (
+                <div
+                  key={item.id}
+                  className="flex justify-between text-gray-700 text-sm"
+                >
+                  <span>{item.title.split(" ").slice(0, 3).join(" ")}...</span>
+                  <span>${item.price * item.quantity}</span>
+                </div>
+              ))}
+            </div>
+            <div className="flex justify-between items-center border-t pt-4 mb-6">
+              <span className="font-bold text-lg text-blue-700">Total</span>
+              <span className="font-extrabold text-2xl text-blue-700">
+                ${total}
+              </span>
+            </div>
             <button
-              onClick={() => handleBuyNow()}
-              className="bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-bold py-3 px-6 rounded-full shadow-lg text-lg tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:scale-95"
+              onClick={handleBuyNow}
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-bold py-3 px-6 rounded-full shadow-lg text-lg tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:scale-95"
             >
               Buy Now
             </button>
           </div>
+         
         </>
       )}
     </div>

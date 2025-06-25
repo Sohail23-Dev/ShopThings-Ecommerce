@@ -7,6 +7,7 @@ import Cart from "./components/Cart/Cart.jsx";
 import FAQ from "./components/FAQ/FAQ.jsx";
 import Login from "./components/Login/Login.jsx";
 import Footer from "./components/Footer/Footer.jsx";
+import Profile from "./components/profile/Profile.jsx";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Profile" element={<Profile />} />
       </Routes>
       <Footer />
     </Router>
