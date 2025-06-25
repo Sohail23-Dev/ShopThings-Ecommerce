@@ -31,7 +31,7 @@ const NewHome = () => {
 
   return (
     <>
-      <Menu as="div" className="relative left-[93vw] top-3 inline-block text-left">
+      <Menu as="div" className="relative left-[91vw] top-3 inline-block text-left">
         <Menu.Button className="group inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-1 text-base font-semibold text-gray-700 shadow-sm hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-150">
           <FilterAltIcon className="!text-blue-600 !w-5 !h-5" />
           <ChevronDownIcon

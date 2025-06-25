@@ -1,14 +1,28 @@
-import { React } from "react";
+import { React, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./Nav.css";
 import { useSelector } from "react-redux";
 import User from "../User/User";
 
 const Nav = () => {
-
   //Login and User Toggle 
-  const isLogin = true;
-  
+  const [isLogin, setisLogin] = useState(false);
+
+  // Check login status on mount
+  useEffect(() => {
+    const loginStatus = localStorage.getItem("isLogin");
+    setisLogin(loginStatus === "true");
+  }, []);
+
+  // Optional: Listen for login status changes from other tabs/windows
+  useEffect(() => {
+    const handleStorage = () => {
+      setisLogin(localStorage.getItem("isLogin") === "true");
+    };
+    window.addEventListener("storage", handleStorage);
+    return () => window.removeEventListener("storage", handleStorage);
+  }, []);
+
   const totalQuantity = useSelector((state) =>
     state.cart.reduce((sum, item) => sum + item.quantity, 0)
   );
