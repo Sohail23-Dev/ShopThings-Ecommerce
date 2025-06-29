@@ -30,7 +30,8 @@ const Login = () => {
       return;
     }
     try {
-      const res = await axios.post("https://shopthings-backend.onrender.com/api/auth/Register", {
+      const api = import.meta.env.VITE_API_URL || "";
+      const res = await axios.post(`${api}/api/auth/Register`, {
         email: form.email,
         password: form.password,
       });
@@ -45,7 +46,8 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://shopthings-backend.onrender.com/api/auth/Login", {
+      const api = import.meta.env.VITE_API_URL || "";
+      const res = await axios.post(`${api}/api/auth/Login`, {
         email: form.email,
         password: form.password,
       });
