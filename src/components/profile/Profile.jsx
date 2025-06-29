@@ -9,7 +9,7 @@ const Profile = () => {
   const [editUser, setEditUser] = useState({});
   const [avatarPreview, setAvatarPreview] = useState(null);
   // const [avatarFile, setAvatarFile] = useState(null);
-
+    const api = import.meta.env.VITE_API_URL || "";
   useEffect(() => {
     const api = import.meta.env.VITE_API_URL || "";
     const email = localStorage.getItem("userEmail");
@@ -56,7 +56,7 @@ const Profile = () => {
     try {
       setLoading(true);
       // Send updated profile to backend (avatar as base64 string)
-      const res = await axios.post("/api/auth/updateProfile", {
+      const res = await axios.post(`${api}/api/auth/updateProfile`, {
         email: editUser.email,
         phone: editUser.phone,
         address: editUser.address,
