@@ -5,13 +5,9 @@ import tailwindcss from '@tailwindcss/vite'
 // https://vite.dev/config/
 export default defineConfig({
   server: {
-    proxy: {
-      '/api': {
-        target: 'https://shopthings-backend.onrender.com', // Local backend for dev only
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      },
-    },
+    proxy:{
+      '/api' : 'http://localhost:3004'
+    }
   },
-  plugins: [react(), tailwindcss()]
+  plugins: [react(),tailwindcss()]
 })

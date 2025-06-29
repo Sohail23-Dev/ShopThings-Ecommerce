@@ -11,6 +11,7 @@ const Profile = () => {
   // const [avatarFile, setAvatarFile] = useState(null);
 
   useEffect(() => {
+    const api = import.meta.env.VITE_API_URL || "";
     const email = localStorage.getItem("userEmail");
     if (!email) {
       setError("No user email found. Please login.");
@@ -18,7 +19,7 @@ const Profile = () => {
       return;
     }
     axios
-      .post("/api/auth/Profile", { email })
+      .post(`${api}/api/auth/Profile`, { email })
       .then((res) => {
         setUser(res.data.user);
         setEditUser(res.data.user); // Set initial edit state
