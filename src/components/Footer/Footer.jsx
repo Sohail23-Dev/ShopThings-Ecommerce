@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 const Footer = () => {
   return (
     <>
-      <footer className="bg-gray-50 border-t border-gray-200 pt-10 pb-2 px-2 sm:px-4 mt-10">
+      <footer className="bg-gray-50 border-t border-gray-200 pt-10 pb-2 px-2 sm:px-4 mt-10 relative top-[10vh]">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-center items-center gap-8 md:gap-10 text-center flex-wrap">
           {/* Brand and Description */}
           <div className="flex-1 min-w-[220px] flex flex-col items-center mb-6 md:mb-0">

@@ -4,7 +4,7 @@ import notav from "../../assets/notav.webp";
 import {
   decreaseValue,
   increaseValue,
-  removeFromCart,
+  
 } from "../../features/cartSlice";
 import { useNavigate } from "react-router-dom";
 
@@ -17,9 +17,10 @@ const Cart = () => {
     e.target.src = notav;
   };
   const handleBuyNow = () => {
-    alert(`Payment Completed for the Products`);
-    dispatch(removeFromCart());
-    navigate("/");
+    navigate("/Checkout");
+    // alert(`Payment Completed for the Products`);
+    // dispatch(removeFromCart());
+    // navigate("/");
   };
 
   const total = cartItems.reduce(

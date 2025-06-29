@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   server: {
     proxy:{
-      '/api' : 'http://localhost:3004'
+      '/api' : 'https://shopthings-backend.onrender.com'
     }
   },
   plugins: [react(),tailwindcss()]

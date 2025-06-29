@@ -1,5 +1,5 @@
 import { React, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Nav.css";
 import { useSelector } from "react-redux";
 import User from "../User/User";
@@ -7,6 +7,8 @@ import User from "../User/User";
 const Nav = () => {
   //Login and User Toggle 
   const [isLogin, setisLogin] = useState(false);
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
 
   // Check login status on mount
   useEffect(() => {
@@ -27,6 +29,11 @@ const Nav = () => {
     state.cart.reduce((sum, item) => sum + item.quantity, 0)
   );
 
+  const handleSearch = (e) => {
+    const value = e.target.value;
+    setSearch(value);
+    navigate(`/?search=${encodeURIComponent(value)}`);
+  };
 
 
   return (
@@ -55,6 +62,26 @@ const Nav = () => {
         </Link>
       </div>
       <div className="flex items-center gap-8">
+        {/* Search Bar */}
+        <form className="relative mr-4 hidden md:block" onSubmit={e => e.preventDefault()}>
+          <input
+            type="text"
+            placeholder="Search products..."
+            className="pl-10 pr-4 py-2 rounded-full border border-gray-300 focus:border-blue-500 outline-none bg-gray-50 text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200 w-64"
+            value={search}
+            onChange={handleSearch}
+          />
+          <svg
+            className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </form>
         <Link
           to="/"
           className="Nav-links text-gray-700 hover:text-blue-600 font-medium transition-colors"

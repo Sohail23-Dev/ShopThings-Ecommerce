@@ -9,6 +9,11 @@ const Login = () => {
     password: "",
     cpassword: "",
   });
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
   const [toggled, setToggled] = useState(false);
 
@@ -46,6 +51,7 @@ const Login = () => {
       });
       alert(res.data.message || "Login successful");
       localStorage.setItem("isLogin", "true");
+      localStorage.setItem("userEmail", form.email); 
       navigate("/");
       window.location.reload();
     } catch (err) {
@@ -76,15 +82,30 @@ const Login = () => {
                 onChange={handleChange}
                 required
               />
-              <input
-                className="px-4 py-3 rounded-xl border-2 border-blue-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200"
-                placeholder="Password"
-                type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
-                required
-              />
+              <div className="relative">
+                <input
+                  className="px-4 py-3 pr-10 rounded-xl border-2 border-blue-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200 w-full"
+                  placeholder="Password"
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={form.password}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600 focus:outline-none"
+                  tabIndex={-1}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                >
+                  {showPassword ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.402-3.22 1.125-4.575M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3l18 18" /></svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-.274.857-.67 1.664-1.175 2.4" /></svg>
+                  )}
+                </button>
+              </div>
               <div className="flex items-center gap-2">
                 <input
                   type="checkbox"
@@ -121,21 +142,36 @@ const Login = () => {
               <input
                 className="px-4 py-3 rounded-xl border-2 border-green-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200"
                 placeholder="Password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 name="password"
                 value={form.password}
                 onChange={handleChange}
                 required
               />
-              <input
-                className="px-4 py-3 rounded-xl border-2 border-green-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200"
-                placeholder="Confirm Password"
-                type="password"
-                name="cpassword"
-                value={form.cpassword}
-                onChange={handleChange}
-                required
-              />
+              <div className="relative">
+                <input
+                  className="px-4 py-3 pr-10 rounded-xl border-2 border-green-200 focus:border-purple-400 outline-none bg-white text-gray-700 placeholder-gray-400 shadow-sm transition-all duration-200 w-full"
+                  placeholder="Confirm Password"
+                  type={showConfirmPassword ? "text" : "password"}
+                  name="cpassword"
+                  value={form.cpassword}
+                  onChange={handleChange}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-blue-600 focus:outline-none"
+                  tabIndex={-1}
+                  aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                >
+                  {showConfirmPassword ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-5.523 0-10-4.477-10-10 0-1.657.402-3.22 1.125-4.575M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3l18 18" /></svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-.274.857-.67 1.664-1.175 2.4" /></svg>
+                  )}
+                </button>
+              </div>
               <button
                 type="submit"
                 className="bg-gradient-to-r from-green-400 to-blue-400 text-white px-6 py-2 rounded-full shadow-lg hover:from-blue-400 hover:to-green-400 hover:scale-105 transition-transform duration-200 font-semibold tracking-wide"
@@ -157,4 +193,5 @@ const Login = () => {
     </div>
   );
 };
+
 export default Login;

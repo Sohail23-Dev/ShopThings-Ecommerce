@@ -1,15 +1,28 @@
-import React from "react";
-import products from "../Products";
+import React, { useEffect, useState } from "react";
 import NewCard from "../Cards/NewCard";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { setCategory } from "../../features/filterSlice";
-// import products from "../Products";
-import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 const NewHome = () => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios
+      .get("https://fakestoreapi.com/products")
+      .then((res) => {
+        setProducts(res.data); // Adjust if your API returns { products: [...] }
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
   const categories = [
     "all",
     ...Array.from(new Set(products.map((product) => product.category))),
@@ -19,19 +32,28 @@ const NewHome = () => {
     dispatch(setCategory(category));
   };
 
-  const dispatch = useDispatch();
   // Get selected category from Redux
   const selectedCategory = useSelector((state) => state.filter.category);
 
-  // Filter products based on selected category
-  const filteredProducts =
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const search = searchParams.get("search") || "";
+
+  // Filter products based on selected category and search
+  const filteredProducts = (
     selectedCategory === "all"
       ? products
-      : products.filter((item) => item.category === selectedCategory);
+      : products.filter((item) => item.category === selectedCategory)
+  ).filter((item) => item.title.toLowerCase().includes(search.toLowerCase()));
+
+  if (loading) return <div className="text-center mt-10">Loading...</div>;
 
   return (
     <>
-      <Menu as="div" className="relative left-[91vw] top-3 inline-block text-left">
+      <Menu
+        as="div"
+        className="relative left-[91vw] top-3 inline-block text-left"
+      >
         <Menu.Button className="group inline-flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-3 py-1 text-base font-semibold text-gray-700 shadow-sm hover:bg-blue-50 hover:text-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all duration-150">
           <FilterAltIcon className="!text-blue-600 !w-5 !h-5" />
           <ChevronDownIcon

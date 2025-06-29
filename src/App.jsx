@@ -8,6 +8,8 @@ import FAQ from "./components/FAQ/FAQ.jsx";
 import Login from "./components/Login/Login.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/profile/Profile.jsx";
+import CheckOut from "./components/Checkout/CheckOut.jsx";
+import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute.jsx";
 
 const App = () => {
   return (
@@ -20,7 +22,22 @@ const App = () => {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Profile" element={<Profile />} />
+        <Route
+          path="/Profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Checkout"
+          element={
+            <ProtectedRoute>
+              <CheckOut />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
       <Footer />
     </Router>
