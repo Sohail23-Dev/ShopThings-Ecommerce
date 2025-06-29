@@ -30,7 +30,7 @@ const Login = () => {
       return;
     }
     try {
-      const res = await axios.post("/api/auth/Register", {
+      const res = await axios.post("https://shopthings-backend.onrender.com/api/auth/Register", {
         email: form.email,
         password: form.password,
       });
@@ -45,7 +45,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("/api/auth/Login", {
+      const res = await axios.post("https://shopthings-backend.onrender.com/api/auth/Login", {
         email: form.email,
         password: form.password,
       });
