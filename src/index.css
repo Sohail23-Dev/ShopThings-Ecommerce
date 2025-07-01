@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
-*{
-    scrollbar-color: transparent transparent;
+body {
+    background-color: rgb(249 250 251);
+    margin: 0px;
+    padding: 0px;
 }

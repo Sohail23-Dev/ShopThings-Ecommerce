@@ -3,6 +3,9 @@
     display: none;
   }
 }
+nav{
+  z-index: 99;
+}
 /* @media screen and (max-width: 480px) {
   .main-bar{
     width: 100dvw;

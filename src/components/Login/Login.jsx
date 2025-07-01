@@ -15,7 +15,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
-  const [toggled, setToggled] = useState(false);
+  const [toggled, setSlider] = useState(false);
 
   // Handle input changes for both forms
   const handleChange = (e) => {
@@ -36,7 +36,7 @@ const Login = () => {
         password: form.password,
       });
       alert(res.data.message || "Registered successfully");
-      setToggled(false);
+      setSlider(false);
     } catch (err) {
       alert(err.response?.data?.message || "Registration failed");
     }
@@ -188,7 +188,7 @@ const Login = () => {
       <button
         type="button"
         className={`toggle-btn ${toggled ? "toggled" : ""}`}
-        onClick={() => setToggled(!toggled)}
+        onClick={() => setSlider(!toggled)}
       >
         <div className="thumb"></div>
       </button>

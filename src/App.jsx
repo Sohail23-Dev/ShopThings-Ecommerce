@@ -10,13 +10,15 @@ import Footer from "./components/Footer/Footer.jsx";
 import Profile from "./components/profile/Profile.jsx";
 import CheckOut from "./components/Checkout/CheckOut.jsx";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute.jsx";
+import Main from "./components/main/Main.jsx";
 
 const App = () => {
   return (
     <Router>
       <Nav />
       <Routes>
-        <Route path="/" element={<NewHome />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/Shop" element={<NewHome />} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Review" element={<Review />} />
         <Route path="/Cart" element={<Cart />} />
