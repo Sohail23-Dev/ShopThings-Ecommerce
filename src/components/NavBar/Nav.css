@@ -1,14 +1,11 @@
-@media screen and (max-width: 768px) {
-  .Nav-links{
-    display: none;
-  }
-}
 nav{
   z-index: 99;
+  position: relative;
 }
-/* @media screen and (max-width: 480px) {
-  .main-bar{
-    width: 100dvw;
-    background-color: green;
+@media screen and (max-width: 430px) {
+  .nav-cart {
+    position: absolute;
+    top: 4px;
   }
-} */
+}
+

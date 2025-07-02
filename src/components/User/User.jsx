@@ -1,3 +1,4 @@
+
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import { Menu, MenuButton, MenuItem } from "@headlessui/react";
@@ -6,16 +7,29 @@ import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const navigate = useNavigate();
+  // Try to get avatar URL from localStorage or user context (adjust as needed)
+  const avatar = localStorage.getItem("avatar");
+
   const handleLogout = () => {
     localStorage.removeItem("isLogin");
     navigate("/");
     window.location.reload(); // Force page refresh after logout
-  }
+  };
+
   return (
     <>
       <Menu>
-        <MenuButton className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer">
-          <PersonIcon className="text-gray-600" />
+        <MenuButton className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer overflow-hidden">
+          {avatar ? (
+            <img
+              src={avatar}
+              alt="avatar"
+              className="w-8 h-8 rounded-full object-cover"
+              onError={e => { e.target.onerror = null; e.target.src = 'https://ui-avatars.com/api/?name=User'; }}
+            />
+          ) : (
+            <PersonIcon className="text-gray-600" />
+          )}
         </MenuButton>
         <Menu.Items className="absolute right-0 mt-[210px] w-48 py-2 bg-white shadow-lg rounded-md border border-gray-200">
           <MenuItem>

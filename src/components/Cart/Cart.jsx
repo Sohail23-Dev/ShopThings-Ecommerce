@@ -29,7 +29,7 @@ const Cart = () => {
   );
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-5xl mx-auto p-6">
       <h1 className="text-3xl font-bold mb-6 text-blue-700 border-b pb-2">
         Your Cart
       </h1>
@@ -38,8 +38,9 @@ const Cart = () => {
           Your cart is empty.
         </div>
       ) : (
-        <>
-          <div className="space-y-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Cart Items */}
+          <div className="md:col-span-2 space-y-6 mb-8">
             {cartItems.map((item) => (
               <div
                 key={item.id}
@@ -69,7 +70,7 @@ const Cart = () => {
                     <span className="text-xl font-bold text-blue-700">
                       ${item.price * item.quantity}
                     </span>
-                    <div className="flex absolute right-[30vw] items-center gap-2 bg-gray-100 px-2 py-1 rounded-full shadow-inner">
+                    <div className="flex items-center gap-2 bg-gray-100 px-2 py-1 rounded-full shadow-inner">
                       <button
                         onClick={() => {
                           dispatch(decreaseValue({ id: item.id }));
@@ -95,7 +96,8 @@ const Cart = () => {
               </div>
             ))}
           </div>
-          <div className="md:col-span-1 flex flex-col justify-between bg-white rounded-2xl shadow-xl p-6 h-fit border border-blue-100 absolute right-[7vw] top-[20vh]">
+          {/* Order Summary */}
+          <div className="md:col-span-1 flex flex-col justify-between bg-white rounded-2xl shadow-xl p-6 h-fit border border-blue-100">
             <h2 className="text-xl font-bold text-gray-800 mb-4">
               Order Summary
             </h2>
@@ -123,8 +125,7 @@ const Cart = () => {
               Buy Now
             </button>
           </div>
-         
-        </>
+        </div>
       )}
     </div>
   );

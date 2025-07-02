@@ -5,7 +5,7 @@ import { Menu } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import FilterAltIcon from "@mui/icons-material/FilterAlt";
 import { setCategory } from "../../features/filterSlice";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 
 const NewHome = () => {
@@ -83,10 +83,16 @@ const NewHome = () => {
           </Menu.Items>
         </Menu>
       </div>
-
       <div className="flex justify-around flex-wrap gap-8 p-4">
         {(filteredProducts || []).map((prod) => (
-          <NewCard key={prod.id} ObjProd={prod} />
+          <Link
+            key={prod.id}
+            to={`/Product/${prod.id}`}
+            state={{ product: prod }}
+            className="block"
+          >
+            <NewCard ObjProd={prod} />
+          </Link>
         ))}
       </div>
     </>

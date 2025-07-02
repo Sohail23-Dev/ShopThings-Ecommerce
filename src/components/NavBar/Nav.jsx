@@ -143,7 +143,7 @@ const Nav = () => {
               placeholder="Search products..."
               value={search}
               onChange={handleSearch}
-              className={`pl-10 pr-4 py-[7px] rounded-full border border-gray-300 focus:border-blue-500 outline-none bg-gray-50 text-gray-700 placeholder-gray-400 shadow-sm absolute left-0 top-0 h-10 transition-all duration-[1500ms] ease-in-out ${showSearch ? 'w-40 lg:w-56 opacity-100' : 'w-0 opacity-0 pointer-events-none'}`}
+              className={`pl-10 pr-4 py-[7px] rounded-full border border-gray-300 focus:border-blue-500 outline-none bg-gray-50 text-gray-700 placeholder-gray-400 shadow-sm absolute left-0 top-0 h-10 transition-all duration-[1500ms] ease-in-out ${showSearch ? 'w-40 lg:w-46 opacity-100' : 'w-0 opacity-0 pointer-events-none'}`}
               style={{
                 transitionProperty: 'width, opacity',
                 overflow: 'hidden',
@@ -170,15 +170,14 @@ const Nav = () => {
       <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
         <Link
           to="/Cart"
-          className="Nav-links text-white hover:text-blue-200 font-medium transition-colors relative"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            className="w-6 h-6"
+            strokeWidth={1.7}
+            stroke="white"
+            className=" cart-icon w-6 h-6 absolute top-4 right-35 cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -188,7 +187,7 @@ const Nav = () => {
           </svg>
 
           {totalQuantity > 0 && (
-            <span className="absolute -top-2 -right-4 bg-red-600 text-white px-2 rounded-3xl text-xs font-bold">
+            <span className="relative -top-3 -right-2 bg-red-600 text-white px-2 rounded-3xl text-xs font-bold cart-num">
               {totalQuantity}
             </span>
           )}

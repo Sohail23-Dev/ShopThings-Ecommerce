@@ -23,11 +23,13 @@ const NewCard = ({ ObjProd }) => {
     e.target.src = notav;
   };
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (e) => {
+    e.preventDefault();
     dispatch(addtoCart({ ...ObjProd }));
   };
 
-  const handleIncrease = () => {
+  const handleIncrease = (e) => {
+    e.preventDefault();
     if (cartItem.quantity >= 10) {
       return;
     } else {
@@ -35,7 +37,8 @@ const NewCard = ({ ObjProd }) => {
     }
   };
 
-  const handleDecrease = () => {
+  const handleDecrease = (e) => {
+    e.preventDefault();
     dispatch(decreaseValue({ id }));
   };
 

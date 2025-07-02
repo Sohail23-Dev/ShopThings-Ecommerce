@@ -11,6 +11,7 @@ import Profile from "./components/profile/Profile.jsx";
 import CheckOut from "./components/Checkout/CheckOut.jsx";
 import ProtectedRoute from "./components/ProtectedRoutes/ProtectedRoute.jsx";
 import Main from "./components/main/Main.jsx";
+import Product from "./components/Product/Product.jsx";
 
 const App = () => {
   return (
@@ -24,6 +25,8 @@ const App = () => {
         <Route path="/Cart" element={<Cart />} />
         <Route path="/FAQ" element={<FAQ />} />
         <Route path="/Login" element={<Login />} />
+        <Route path="/Product/:id" element={<Product />} />
+       
         <Route
           path="/Profile"
           element={
