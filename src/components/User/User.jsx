@@ -1,5 +1,5 @@
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import { Menu, MenuButton, MenuItem } from "@headlessui/react";
 import { Link } from "react-router-dom";
@@ -7,8 +7,24 @@ import { useNavigate } from "react-router-dom";
 
 const User = () => {
   const navigate = useNavigate();
-  // Try to get avatar URL from localStorage or user context (adjust as needed)
-  const avatar = localStorage.getItem("avatar");
+
+  const [avatar, setAvatar] = useState("");
+  const userEmail = localStorage.getItem("userEmail");
+
+  useEffect(() => {
+    if (userEmail) {
+      fetch(`${import.meta.env.VITE_API_URL || "http://localhost:5000"}/api/profile?email=${encodeURIComponent(userEmail)}`)
+        .then(res => res.json())
+        .then(data => {
+          console.log("Profile API response:", data); // Debug log
+          if (data && data.avatar) setAvatar(data.avatar);
+        })
+        .catch((err) => {
+          console.error("Profile fetch error:", err);
+          setAvatar("");
+        });
+    }
+  }, [userEmail]);
 
   const handleLogout = () => {
     localStorage.removeItem("isLogin");
@@ -25,7 +41,11 @@ const User = () => {
               src={avatar}
               alt="avatar"
               className="w-8 h-8 rounded-full object-cover"
-              onError={e => { e.target.onerror = null; e.target.src = 'https://ui-avatars.com/api/?name=User'; }}
+              onError={e => {
+                e.target.onerror = null;
+                e.target.src = 'https://ui-avatars.com/api/?name=User';
+                setAvatar('https://ui-avatars.com/api/?name=User');
+              }}
             />
           ) : (
             <PersonIcon className="text-gray-600" />

@@ -177,7 +177,7 @@ const Nav = () => {
             viewBox="0 0 24 24"
             strokeWidth={1.7}
             stroke="white"
-            className=" cart-icon w-6 h-6 absolute top-4 right-35 cursor-pointer"
+            className=" cart-icon w-6 h-6 absolute top-4 right-30 cursor-pointer"
           >
             <path
               strokeLinecap="round"
@@ -187,7 +187,7 @@ const Nav = () => {
           </svg>
 
           {totalQuantity > 0 && (
-            <span className="relative -top-3 -right-2 bg-red-600 text-white px-2 rounded-3xl text-xs font-bold cart-num">
+            <span className="relative -top-3 right-3 bg-red-600 text-white px-2 rounded-3xl text-xs font-bold cart-num">
               {totalQuantity}
             </span>
           )}
