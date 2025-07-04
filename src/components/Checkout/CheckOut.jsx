@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeFromCart } from '../../features/cartSlice';
+// Create a test account or replace with real credentials.
 
 
 const CheckOut = () => {
@@ -14,23 +15,38 @@ const CheckOut = () => {
   });
   const [orderPlaced, setOrderPlaced] = useState(false);
   const dispatch = useDispatch();
-
   const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setOrderPlaced(true);
+    try {
+      const response = await fetch(`${import.meta.env.VITE_API_URL || "http://localhost:3004"}/Checkout/mail/send-Order-confirmation/${form.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...form,
+          cart: cartItems,
+          total,
+        }),
+      });
+      if (response.ok) {
+        setOrderPlaced(true);
+        dispatch(removeFromCart());
+      } else {
+        alert("Failed to place order. Please try again.");
+      }
+    } catch (e) {
+      alert(`An error occurred. Please try again. ${e}`);
+    }
   };
 
-  const handlePlaceOrder = () => {
-    setOrderPlaced(true);
-    dispatch(removeFromCart());
-
-  }
+  // Remove handlePlaceOrder, now handled in handleSubmit
   if (orderPlaced) {
     return (
       <div className="max-w-lg mx-auto mt-16 bg-white rounded-2xl shadow-lg p-8 flex flex-col items-center">
@@ -133,7 +149,6 @@ const CheckOut = () => {
             type="submit"
             className="w-full bg-gradient-to-r from-blue-600 to-blue-400 hover:from-blue-700 hover:to-blue-500 text-white font-bold py-3 px-6 rounded-full shadow-lg text-lg tracking-wide transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 active:scale-95"
             disabled={cartItems.length === 0}
-            onClick={handlePlaceOrder}
           >
             Place Order
           </button>
