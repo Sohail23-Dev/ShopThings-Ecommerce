@@ -208,15 +208,15 @@
 .cart-icon {
   width: 1.5rem;
   height: 1.5rem;
-  position: relative;
-  top: 0rem;
-  right: 1.2rem;
+  position: absolute;
+  top: 1rem;
+  right: 6.5rem;
   cursor: pointer;
 }
 .cart-num {
   position: absolute;
   top: 0.5rem;
-  right: 5.1rem;
+  right: 6rem;
   background: #dc2626;
   color: #fff;
   padding: 0 0.35rem;
@@ -228,8 +228,7 @@
 
 /* Login button */
 .nav-login-btn {
-  margin-left: 0.5rem;
-  padding: 0.25rem 1.25rem;
+  padding: 0.25rem 1.15rem;
   background: #f5e6e0;
   color: #12004d;
   border-radius: 0.75rem;
@@ -239,6 +238,8 @@
   transition: background 0.2s;
   text-decoration: none;
   display: inline-block;
+  position: relative;
+  right: -1.5rem;
 }
 .nav-login-btn:hover {
   background: #e5d6d0;
