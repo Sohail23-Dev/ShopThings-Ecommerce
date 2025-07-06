@@ -7,7 +7,7 @@ import axios from "axios";
 
 const User = () => {
   const navigate = useNavigate();
-  const [avatar, setAvatar] = useState("");
+  // const [avatar, setAvatar] = useState("");
 
   const [avatarPreview, setAvatarPreview] = useState(null);
   const userEmail = localStorage.getItem("userEmail");
