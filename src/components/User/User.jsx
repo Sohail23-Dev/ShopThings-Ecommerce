@@ -7,6 +7,7 @@ import axios from "axios";
 
 const User = () => {
   const navigate = useNavigate();
+  const [avatar, setAvatar] = useState("");
 
   const [avatarPreview, setAvatarPreview] = useState(null);
   const userEmail = localStorage.getItem("userEmail");
@@ -16,7 +17,7 @@ const User = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await axios.post(`${api}/api/auth/Profile`, {
+        const res = await axios.post(`${api}/api/auth/updateProfile`, {
           email: userEmail,
         });
         setRes(res.data);
@@ -52,7 +53,7 @@ const User = () => {
               }}
             />
           ) : (
-            <PersonIcon className="user-avatar-icon" />
+            <PersonIcon className="user-avatar-icon bg-amber-50 rounded-3xl" />
           )}
         </MenuButton>
         <Menu.Items className="user-menu-items">
