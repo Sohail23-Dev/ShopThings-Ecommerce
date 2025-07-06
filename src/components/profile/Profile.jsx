@@ -9,7 +9,7 @@ const Profile = () => {
   const [editUser, setEditUser] = useState({});
   const [avatarPreview, setAvatarPreview] = useState(null);
   // const [avatarFile, setAvatarFile] = useState(null);
-    const api = import.meta.env.VITE_API_URL || "";
+  const api = import.meta.env.VITE_API_URL || "";
   useEffect(() => {
     const api = import.meta.env.VITE_API_URL || "";
     const email = localStorage.getItem("userEmail");
@@ -78,8 +78,7 @@ const Profile = () => {
       <img
         src={
           avatarPreview ||
-          user.avatar ||
-          "https://randomuser.me/api/portraits/men/32.jpg"
+          user.avatar 
         }
         alt="User Avatar"
         className="w-28 h-28 rounded-full border-4 border-blue-200 shadow mb-4"
