@@ -82,10 +82,12 @@ const Nav = () => {
       {/* Left: Logo (hidden on mobile) */}
       <div className="nav-logo-container">
         <span className="nav-logo">
+          <Link to="/">
           <span className="nav-logo-bold">
             Shop
             <span className="nav-logo-blue">Things</span>
           </span>
+          </Link>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

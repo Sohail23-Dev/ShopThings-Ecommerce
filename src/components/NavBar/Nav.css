@@ -253,7 +253,7 @@
   z-index: 30;
   display: block;
 }
-@media (min-width: 768px) {
+@media (min-width: 892px) {
   .nav-mobile-overlay {
     display: none;
   }
@@ -275,7 +275,7 @@
 .nav-mobile-menu-open {
   transform: translateX(0);
 }
-@media (min-width: 768px) {
+@media (min-width: 892px) {
   .nav-mobile-menu {
     display: none;
   }

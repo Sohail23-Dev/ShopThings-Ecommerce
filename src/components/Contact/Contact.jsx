@@ -15,7 +15,7 @@ const Contact = () => {
             </span>
             <h3 className="text-2xl font-bold text-black mb-2">Email</h3>
             <p className="text-base text-black mb-4">Reach out to us anytime via email for support, feedback, or inquiries. Our team responds within 24 hours.</p>
-            <a href="mailto:care@ShopThings.com" className="text-base text-black underline">care@ShopThings.com</a>
+            <a href="mailto:care@ShopThings.com" className="text-base text-black underline">shopthingsecommerce@gmail.com</a>
           </div>
           {/* Live chat */}
           <div className="flex flex-col items-center text-center">
