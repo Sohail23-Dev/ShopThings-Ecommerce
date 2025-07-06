@@ -209,26 +209,21 @@
   width: 1.5rem;
   height: 1.5rem;
   position: relative;
-  top: 0.85rem;
+  top: 0rem;
   right: 1.2rem;
   cursor: pointer;
 }
-@media (max-width: 468px) {
-  .cart-icon {
-    top: 2dvh;
-  }
-}
 .cart-num {
-  position: relative;
-  top: -1.75rem;
-  right: 0.5rem;
+  position: absolute;
+  top: 0.5rem;
+  right: 5.1rem;
   background: #dc2626;
   color: #fff;
   padding: 0 0.35rem;
   border-radius: 80px;
   font-size: 0.7rem;
   font-weight: bold;
-  z-index: 2;
+  z-index: 99;
 }
 
 /* Login button */
