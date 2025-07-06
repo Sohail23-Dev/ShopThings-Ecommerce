@@ -35,7 +35,7 @@ const User = () => {
   return (
     <>
       <Menu>
-        <MenuButton className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer overflow-hidden">
+        <MenuButton className="flex items-center justify-center w-8 h-8 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer overflow-hidden ">
           {avatar ? (
             <img
               src={avatar}
@@ -51,7 +51,7 @@ const User = () => {
             <PersonIcon className="text-gray-600" />
           )}
         </MenuButton>
-        <Menu.Items className="absolute right-0 mt-[210px] w-48 py-2 bg-white shadow-lg rounded-md border border-gray-200">
+        <Menu.Items className="absolute right-6 mt-[210px] w-40 py-2 bg-white shadow-lg rounded-md border border-gray-200 z-10">
           <MenuItem>
             <Link
               to="/Profile"

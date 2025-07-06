@@ -1,11 +1,354 @@
-nav{
-  z-index: 99;
-  position: relative;
+/* NavBar Container */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12004d;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 0.5rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  height: 7.5dvh;
 }
-@media screen and (max-width: 430px) {
-  .nav-cart {
+
+/* Hamburger (mobile) */
+.nav-hamburger {
+  display: none;
+}
+
+@media (max-width: 892px) {
+  .nav-hamburger {
     position: absolute;
-    top: 4px;
+    left: 1rem;
+    top: 0.85rem;
+    align-items: center;
+    z-index: 50;
+    display: flex;
+  }
+}
+.nav-hamburger-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+}
+.nav-hamburger-icon {
+  width: 2rem;
+  height: 1.8rem;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+}
+
+/* Logo */
+.nav-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+.nav-logo {
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 2rem;
+  color: #fff;
+  letter-spacing: 0.05em;
+  margin-right: 0.5rem;
+  align-items: center;
+  display: flex;
+  position: relative;
+  left: 1.5rem;
+  top: -0.2rem;
+}
+@media (min-width: 902px) {
+  .nav-logo {
+    position: relative;
+    left: 0px;
   }
 }
 
+.nav-logo-bold {
+  font-weight: 800;
+  font-size: 2rem;
+  color: #fff;
+}
+.nav-logo-blue {
+  color: #2563eb;
+}
+.nav-logo-icon {
+  width: 2rem;
+  height: 2rem;
+  min-width: 1.75rem;
+  min-height: 1.75rem;
+  margin-left: 0.5rem;
+}
+@media (max-width: 500px) {
+  .nav-logo-icon {
+    display: none;
+  }
+}
+
+/* Show logo on md+ screens */
+@media (min-width: 768px) {
+  .nav-logo {
+    display: flex;
+  }
+}
+
+/* Links (center) */
+.nav-links-container {
+  display: none;
+}
+@media (min-width: 892px) {
+  .nav-links-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  .nav-link {
+    color: #fff;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+  }
+  .nav-link:hover {
+    color: #a5b4fc;
+  }
+}
+
+/* Search bar */
+.nav-search-container {
+  position: relative;
+  display: none;
+  align-items: center;
+  min-width: 40px;
+  height: 2.5rem;
+}
+
+@media (min-width: 1226px) {
+  .nav-search-container {
+    display: flex;
+  }
+  
+}
+.nav-search-inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 2.5rem;
+}
+.nav-search-input {
+  padding-left: 2.5rem;
+  padding-right: 1rem;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  border-radius: 999px;
+  border: 1px solid #d1d5db;
+  background: #f9fafb;
+  color: #374151;
+  font-size: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2.5rem;
+  width: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  z-index: 20;
+  overflow: hidden;
+}
+.nav-search-input-active {
+  width: 10rem;
+  opacity: 1;
+  pointer-events: auto;
+}
+@media (min-width: 1024px) {
+  .nav-search-input-active {
+    width: 11.5rem;
+  }
+}
+.nav-search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.25rem;
+  height: 1.25rem;
+  color: #9ca3af;
+  cursor: pointer;
+  z-index: 30;
+  transition: color 0.2s;
+}
+.nav-search-icon:hover {
+  color: #2563eb;
+}
+
+/* Right section */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+@media (min-width: 768px) {
+  .nav-right {
+    gap: 1rem;
+  }
+}
+.cart-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
+  top: 0.85rem;
+  right: 1.2rem;
+  cursor: pointer;
+}
+@media (max-width: 468px) {
+  .cart-icon {
+    top: 2dvh;
+  }
+}
+.cart-num {
+  position: relative;
+  top: -1.75rem;
+  right: 0.5rem;
+  background: #dc2626;
+  color: #fff;
+  padding: 0 0.35rem;
+  border-radius: 80px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Login button */
+.nav-login-btn {
+  margin-left: 0.5rem;
+  padding: 0.25rem 1.25rem;
+  background: #f5e6e0;
+  color: #12004d;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  border: none;
+  transition: background 0.2s;
+  text-decoration: none;
+  display: inline-block;
+}
+.nav-login-btn:hover {
+  background: #e5d6d0;
+}
+
+/* Mobile overlay */
+.nav-mobile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 30;
+  display: block;
+}
+@media (min-width: 768px) {
+  .nav-mobile-overlay {
+    display: none;
+  }
+}
+
+/* Mobile menu */
+.nav-mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 16rem;
+  background: #12004d;
+  z-index: 40;
+  transform: translateX(-100%);
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  display: block;
+}
+.nav-mobile-menu-open {
+  transform: translateX(0);
+}
+@media (min-width: 768px) {
+  .nav-mobile-menu {
+    display: none;
+  }
+}
+.nav-mobile-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  padding-top: 4rem;
+}
+.nav-link-mobile {
+  color: #fff;
+  font-size: 1.125rem;
+  text-decoration: none;
+  position: relative;
+  font-weight: 500;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  transition: color 0.2s;
+}
+.nav-link-mobile:hover {
+  color: #a5b4fc;
+}
+.nav-link-cart .cart-num-mobile {
+  position: absolute;
+  top: -0.5rem;
+  right: 8rem;
+  background: #dc2626;
+  color: #fff;
+  padding: 0 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+.nav-login-btn-mobile {
+  width: calc(100% - 2rem);
+  text-align: center;
+  padding: 0.25rem 1.5rem;
+  background: #f5e6e0;
+  color: #12004d;
+  border: 2px solid #bfdbfe;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s, color 0.2s;
+  display: block;
+}
+.nav-login-btn-mobile:hover {
+  background: #1e3a8a;
+  color: #fff;
+}
+.nav-mobile-shop-btn {
+  position: relative;
+  left: 1.5rem;
+  margin-top: 1rem;
+  width: calc(100% - 5rem);
+  text-align: center;
+  padding: 0.25rem 1.5rem;
+  background: #f5e6e0;
+  color: #12004d;
+  border: 2px solid #bfdbfe;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: background 0.2s, color 0.2s;
+  display: block;
+}
+.nav-mobile-shop-btn:hover {
+  background: #1e3a8a;
+  color: #fff;
+}
