@@ -34,6 +34,7 @@ const Login = () => {
       const api = import.meta.env.VITE_API_URL || "";
       await axios.post(`${api}/Checkout/mail/send-Verification-Code/${email}`, {
         verificationCode,
+        isVerified: false,
       });
       alert("OTP sent to your email!");
     } catch (err) {
@@ -75,6 +76,7 @@ const Login = () => {
       const res = await axios.post(`${api}/api/auth/Register`, {
         email: form.email,
         password: form.password,
+        isVerified: true,
       });
       alert(res.data.message || "Registered successfully");
       setSlider(false);
