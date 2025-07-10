@@ -30,7 +30,7 @@ const Login = () => {
         1000 + Math.random() * 9000
       ).toString();
       // Save OTP in state for later verification (in production, verify on backend)
-      setForm((f) => ({ ...f, generatedOtp: verificationCode }));
+      setForm((f) => ({ ...f, verificationCode: verificationCode }));
       const api = import.meta.env.VITE_API_URL || "";
       await axios.post(`${api}/Checkout/mail/send-Verification-Code/${email}`, {
         verificationCode,
