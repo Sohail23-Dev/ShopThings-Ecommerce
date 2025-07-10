@@ -133,7 +133,7 @@ const Profile = () => {
         <div className="flex justify-between border-b py-2">
           <span className="font-semibold">Joined:</span>
           <span className="cursor-not-allowed select-none opacity-60">
-            {user.joined || "-"}
+            {user.createdAt || "-"}
           </span>
         </div>
         <div className="flex justify-between border-b py-2">
